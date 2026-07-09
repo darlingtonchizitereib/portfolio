@@ -4,6 +4,8 @@ import '../widgets/custom_navbar.dart';
 import '../sections/hero_section.dart';
 import '../sections/about_section.dart';
 import '../sections/skills_section.dart';
+import '../sections/projects_section.dart';
+import '../sections/contact_section.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,6 +21,8 @@ class HomePage extends StatelessWidget {
             HeroSection(),
             AboutSection(),
             SkillsSection(),
+            ProjectsSection(),
+            ContactSection()
           ],
         ),
       ),
