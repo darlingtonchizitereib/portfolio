@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
 import '../widgets/skill_card.dart';
+import '../utils/responsive.dart';
 
 class SkillsSection extends StatelessWidget {
   const SkillsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = Responsive.isMobile(context);
+    final isTablet =
+        MediaQuery.of(context).size.width >= 600 &&
+        MediaQuery.of(context).size.width < 1100;
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 80),
+      padding: EdgeInsets.symmetric(
+        horizontal: isMobile ? 20 : 60,
+        vertical: isMobile ? 50 : 80,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "Technical Arsenal",
             style: TextStyle(
               color: Colors.white,
-              fontSize: 40,
+              fontSize: isMobile ? 32 : 40,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -32,10 +40,18 @@ class SkillsSection extends StatelessWidget {
           GridView.count(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            crossAxisCount: 4,
+            crossAxisCount: isMobile
+                ? 1
+                : isTablet
+                ? 2
+                : 4,
             crossAxisSpacing: 20,
             mainAxisSpacing: 20,
-            childAspectRatio: 0.9,
+            childAspectRatio: isMobile
+                ? 1.4
+                : isTablet
+                ? 1.15
+                : 0.9,
             children: const [
               SkillCard(
                 icon: Icons.phone_android,
