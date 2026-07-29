@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/skill_card.dart';
+import '../widgets/animated_skill_card.dart';
 import '../utils/responsive.dart';
 
 class SkillsSection extends StatelessWidget {
@@ -53,49 +53,48 @@ class SkillsSection extends StatelessWidget {
                 ? 1.15
                 : 0.9,
             children: const [
-              SkillCard(
+              AnimatedSkillCard(
                 icon: Icons.phone_android,
                 title: "Flutter",
                 description: "Cross-platform apps from a single codebase.",
               ),
 
-              SkillCard(
+              AnimatedSkillCard(
                 icon: Icons.code,
                 title: "Dart",
                 description: "Modern language powering Flutter applications.",
               ),
 
-              SkillCard(
+              AnimatedSkillCard(
                 icon: Icons.storage,
                 title: "Firebase",
                 description: "Authentication, Firestore and Cloud Functions.",
               ),
 
-              SkillCard(
+              AnimatedSkillCard(
                 icon: Icons.api,
                 title: "REST APIs",
                 description: "Building and consuming scalable APIs.",
               ),
 
-              SkillCard(
+              AnimatedSkillCard(
                 icon: Icons.source,
                 title: "Git & GitHub",
                 description: "Version control and collaborative development.",
               ),
 
-              SkillCard(
+              AnimatedSkillCard(
                 icon: Icons.design_services,
                 title: "UI/UX",
                 description: "Creating intuitive user experiences.",
               ),
 
-              SkillCard(
+              AnimatedSkillCard(
                 icon: Icons.psychology,
                 title: "Problem Solving",
                 description: "Breaking down complex engineering problems.",
               ),
-
-              SkillCard(
+              AnimatedSkillCard(
                 icon: Icons.account_tree,
                 title: "Architecture",
                 description: "Writing maintainable and scalable software.",

@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 import '../widgets/contact_info_card.dart';
+import '../utils/responsive.dart';
+import '../utils/launch_helper.dart';
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = Responsive.isMobile(context);
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 80),
+      padding: EdgeInsets.symmetric(
+        horizontal: isMobile ? 20 : 60,
+        vertical: isMobile ? 50 : 80,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "Let's Build Something Great Together",
             style: TextStyle(
               color: Colors.white,
-              fontSize: 40,
+              fontSize: isMobile ? 32 : 40,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -29,12 +35,12 @@ class ContactSection extends StatelessWidget {
 
           const SizedBox(height: 40),
 
-          const ContactInfoCard(
+          ContactInfoCard(
             icon: Icons.email_outlined,
             title: "Email",
-            value: "your@email.com",
+            value: "dchizitere347@gmail.com",
+            onTap: () => launchURL("mailto:yourname@gmail.com"),
           ),
-
           const SizedBox(height: 20),
 
           const ContactInfoCard(
@@ -53,16 +59,17 @@ class ContactSection extends StatelessWidget {
 
           const SizedBox(height: 20),
 
-          const ContactInfoCard(
+          ContactInfoCard(
             icon: Icons.business_center_outlined,
             title: "LinkedIn",
-            value: "linkedin.com/in/yourusername",
+            value: "www.linkedin.com/in/darlington-chizitere-ibe-4ba3613a2",
+            onTap: () => launchURL("https://linkedin.com/in/yourusername"),
           ),
 
           const SizedBox(height: 40),
 
           ElevatedButton(
-            onPressed: () {},
+           onPressed: () => launchURL("mailto:your@email.com"),
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 28, vertical: 16),
               child: Text("Get In Touch"),

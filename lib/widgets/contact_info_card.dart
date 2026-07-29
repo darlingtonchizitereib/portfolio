@@ -5,17 +5,21 @@ class ContactInfoCard extends StatelessWidget {
   final IconData icon;
   final String title;
   final String value;
+  final VoidCallback? onTap;
 
   const ContactInfoCard({
     super.key,
     required this.icon,
     required this.title,
     required this.value,
+    this.onTap,
   });
-
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return InkWell(
+  borderRadius: BorderRadius.circular(16),
+  onTap: onTap,
+  child: Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: AppColors.card,
@@ -56,6 +60,7 @@ class ContactInfoCard extends StatelessWidget {
           ),
         ],
       ),
+    )
     );
   }
 }
