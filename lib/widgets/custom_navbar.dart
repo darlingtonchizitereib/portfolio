@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 import '../utils/responsive.dart';
+//import 'package:url_launcher/url_launcher.dart';
+// ignore: deprecated_member_use, avoid_web_libraries_in_flutter
+import 'dart:html' as html;
 
 class CustomNavbar extends StatefulWidget {
   final VoidCallback onHomePressed;
@@ -24,6 +27,13 @@ class CustomNavbar extends StatefulWidget {
 
 class _CustomNavbarState extends State<CustomNavbar> {
   bool _isMenuOpen = false;
+
+  void _openResume() {
+  html.window.open(
+    'assets/images/resume/Ibe_Darlington_Chizitere_Resume_MAIN.pdf',
+    '_blank',
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +143,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: _openResume,
                         child: const Text(
                           "Resume",
                           style: TextStyle(
