@@ -42,151 +42,154 @@ class _CustomNavbarState extends State<CustomNavbar> {
         children: [
           Container(
             color: AppColors.background,
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // LEFT NAVIGATION
-                Expanded(
-                  child: Row(
+            
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(15,11,15,10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // LEFT NAVIGATION
+                  Expanded(
+                    child: Row(
+                      children: [
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: Colors.white,
+                          ),
+                          onPressed: widget.onHomePressed,
+                          child: const Text("Home"),
+                        ),
+              
+                        const SizedBox(width: 12),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: Colors.white,
+                          ),
+                          onPressed: widget.onAboutPressed,
+                          child: const Text("About"),
+                        ),
+              
+                        const SizedBox(width: 12),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: Colors.white,
+                          ),
+                          onPressed: widget.onSkillsPressed,
+                          child: const Text("Skills"),
+                        ),
+              
+                        const SizedBox(width: 12),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: Colors.white,
+                          ),
+                          onPressed: widget.onProjectsPressed,
+                          child: const Text("Projects"),
+                        ),
+              
+                        const SizedBox(width: 12),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: Colors.white,
+                          ),
+                          onPressed: widget.onContactPressed,
+                          child: const Text("Contact"),
+                        ),
+                      ],
+                    ),
+                  ),
+              
+                  // CENTER LOGO
+                  Row(
                     children: [
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.white,
+                      Container(
+                        width: 33,
+                        height: 33,
+                        decoration: BoxDecoration(
+                          color: AppColors.gold,
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                        onPressed: widget.onHomePressed,
-                        child: const Text("Home"),
+                        child: const Icon(
+                          Icons.hexagon_outlined,
+                          color: Colors.black,
+                          size: 22,
+                        ),
                       ),
-
-                      const SizedBox(width: 12),
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.white,
+              
+                      const SizedBox(width: 10),
+              
+                      const Text(
+                        "DARLINGTON IBE",
+                        style: TextStyle(
+                          color: AppColors.gold,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
                         ),
-                        onPressed: widget.onAboutPressed,
-                        child: const Text("About"),
-                      ),
-
-                      const SizedBox(width: 12),
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.white,
-                        ),
-                        onPressed: widget.onSkillsPressed,
-                        child: const Text("Skills"),
-                      ),
-
-                      const SizedBox(width: 12),
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.white,
-                        ),
-                        onPressed: widget.onProjectsPressed,
-                        child: const Text("Projects"),
-                      ),
-
-                      const SizedBox(width: 12),
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.white,
-                        ),
-                        onPressed: widget.onContactPressed,
-                        child: const Text("Contact"),
                       ),
                     ],
                   ),
-                ),
-
-                // CENTER LOGO
-                Row(
-                  children: [
-                    Container(
-                      width: 33,
-                      height: 33,
-                      decoration: BoxDecoration(
-                        color: AppColors.gold,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: const Icon(
-                        Icons.hexagon_outlined,
-                        color: Colors.black,
-                        size: 22,
-                      ),
-                    ),
-
-                    const SizedBox(width: 10),
-
-                    const Text(
-                      "DARLINGTON IBE",
-                      style: TextStyle(
-                        color: AppColors.gold,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
-                ),
-
-                // RIGHT SIDE
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          side: const BorderSide(color: AppColors.gold),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 23,
-                            vertical: 18,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        onPressed: _openResume,
-                        child: const Text(
-                          "Resume",
-                          style: TextStyle(
-                            color: AppColors.gold,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-
-                      const SizedBox(width: 9),
-
-                      Stack(
-                        children: [
-                          const CircleAvatar(
-                            radius: 18,
-                            backgroundImage: AssetImage(
-                              "assets/images/image.png",
+              
+                  // RIGHT SIDE
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            side: const BorderSide(color: AppColors.gold),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 23,
+                              vertical: 18,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
                             ),
                           ),
-
-                          Positioned(
-                            bottom: 0,
-                            right: 0,
-                            child: Container(
-                              width: 14,
-                              height: 14,
-                              decoration: BoxDecoration(
-                                color: Colors.green,
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: AppColors.background,
-                                  width: 2,
+                          onPressed: _openResume,
+                          child: const Text(
+                            "Resume",
+                            style: TextStyle(
+                              color: AppColors.gold,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+              
+                        const SizedBox(width: 9),
+              
+                        Stack(
+                          children: [
+                            const CircleAvatar(
+                              radius: 18,
+                              backgroundImage: AssetImage(
+                                "assets/images/image.png",
+                              ),
+                            ),
+              
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              child: Container(
+                                width: 14,
+                                height: 14,
+                                decoration: BoxDecoration(
+                                  color: Colors.green,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: AppColors.background,
+                                    width: 2,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
 
