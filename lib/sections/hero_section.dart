@@ -42,9 +42,9 @@ class HeroSection extends StatelessWidget {
                     ), // glow starts near image
                     radius: 1.0,
                     colors: [
-                      AppColors.gold.withOpacity(0.18),
-                      AppColors.gold.withOpacity(0.08),
-                      AppColors.gold.withOpacity(0.03),
+                      AppColors.gold.withOpacity(0.20),
+                      AppColors.gold.withOpacity(0.09),
+                      AppColors.gold.withOpacity(0.05),
                       Colors.transparent,
                     ],
                     stops: const [0.0, 0.28, 0.55, 1.0],
@@ -58,7 +58,7 @@ class HeroSection extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: isMobile ? 20 : 70,
-              vertical: isMobile ? 24 : 17,
+              vertical: isMobile ? 24 : 15,
             ),
             child: isMobile
                 ? Column(

@@ -39,7 +39,7 @@ class ContactSection extends StatelessWidget {
             icon: Icons.email_outlined,
             title: "Email",
             value: "dchizitere347@gmail.com",
-            onTap: () => launchURL("mailto:yourname@gmail.com"),
+            onTap: () => launchURL("mailto:dchizitere347@gmail.com"),
           ),
           const SizedBox(height: 20),
 
