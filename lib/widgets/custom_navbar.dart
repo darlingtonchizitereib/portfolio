@@ -163,7 +163,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
                             const CircleAvatar(
                               radius: 18,
                               backgroundImage: AssetImage(
-                                "assets/images/image.png",
+                               "assets/image.png",
                               ),
                             ),
               
