@@ -15,7 +15,7 @@ class ProjectsSection extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: isMobile ? 20 : 70,
-        vertical: isMobile ? 50 : 90,
+        vertical: isMobile ? 30 : 50,
       ),
 
       // =========================
@@ -155,28 +155,30 @@ class ProjectsSection extends StatelessWidget {
   // FEATURED PROJECT CARD
   // =========================================================
   Widget _featuredProject(bool isMobile) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.all(isMobile ? 18 : 24),
-      decoration: _cardDecoration(),
+    return HoverProjectCard(
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(isMobile ? 18 : 24),
+        decoration: _cardDecoration(),
 
-      child: isMobile
-          ? Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _featuredImage(),
-                const SizedBox(height: 22),
-                _featuredText(),
-              ],
-            )
-          : Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(flex: 5, child: _featuredImage()),
-                const SizedBox(width: 28),
-                Expanded(flex: 4, child: _featuredText()),
-              ],
-            ),
+        child: isMobile
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _featuredImage(),
+                  const SizedBox(height: 22),
+                  _featuredText(),
+                ],
+              )
+            : Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(flex: 5, child: _featuredImage()),
+                  const SizedBox(width: 28),
+                  Expanded(flex: 4, child: _featuredText()),
+                ],
+              ),
+      ),
     );
   }
 
@@ -389,7 +391,7 @@ class ProjectsSection extends StatelessWidget {
   }) {
     return HoverProjectCard(
       child: Container(
-        padding: const EdgeInsets.all(22),
+        padding: const EdgeInsets.all(16),
         decoration: _cardDecoration(),
 
         child: LayoutBuilder(
@@ -428,7 +430,7 @@ class ProjectsSection extends StatelessWidget {
             // =========================
             // DESKTOP → HORIZONTAL
             // =========================
-            return Row(
+            /* return Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
@@ -451,6 +453,39 @@ class ProjectsSection extends StatelessWidget {
                     description: description,
                     technologies: technologies,
                     liveDemoUrl: liveDemoUrl,
+                  ),
+                ),
+              ],
+            );*/
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                // =========================
+                // LEFT → TEXT CONTENT
+                // =========================
+                Expanded(
+                  child: _smallProjectContent(
+                    title: title,
+                    description: description,
+                    technologies: technologies,
+                    liveDemoUrl: liveDemoUrl,
+                  ),
+                ),
+
+                const SizedBox(width: 22),
+
+                // =========================
+                // RIGHT → PROJECT IMAGE
+                // =========================
+                SizedBox(
+                  width: 230,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(18),
+                    child: Image.asset(
+                      imagePath,
+                      height: 180,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
               ],
@@ -478,7 +513,7 @@ class ProjectsSection extends StatelessWidget {
           title,
           style: const TextStyle(
             color: Color(0xFFF7F7F7),
-            fontSize: 24,
+            fontSize: 22,
             fontWeight: FontWeight.w800,
           ),
         ),
@@ -491,11 +526,11 @@ class ProjectsSection extends StatelessWidget {
           style: const TextStyle(
             color: Color(0xFFE2E2E2),
             fontSize: 13,
-            height: 1.7,
+            height: 1.5,
           ),
         ),
 
-        const SizedBox(height: 18),
+        const SizedBox(height: 12),
 
         // TECHNOLOGY CHIPS
         Wrap(
@@ -504,7 +539,7 @@ class ProjectsSection extends StatelessWidget {
           children: technologies.map((e) => _TechChip(e.toString())).toList(),
         ),
 
-        const SizedBox(height: 22),
+        const SizedBox(height: 16),
 
         // ACTION BUTTONS (UNCHANGED)
         Row(
