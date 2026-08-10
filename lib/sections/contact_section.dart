@@ -156,9 +156,9 @@ class _ContactFormState extends State<_ContactForm> {
   bool _isSending = false;
 
   // TODO: replace with your real EmailJS values (see steps below)
-  static const String _serviceId = 'YOUR_SERVICE_ID';
-  static const String _templateId = 'YOUR_TEMPLATE_ID';
-  static const String _publicKey = 'YOUR_PUBLIC_KEY';
+  static const String _serviceId = 'service_xcgn5qc';
+  static const String _templateId = 'template_lf6q78q';
+  static const String _publicKey = 'KPKgW0YlLbefmuqv4';
 
   @override
   void dispose() {
