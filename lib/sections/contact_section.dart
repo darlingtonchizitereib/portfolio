@@ -21,13 +21,26 @@ class ContactSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "Get in Touch",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: isMobile ? 32 : 40,
-              fontWeight: FontWeight.bold,
-            ),
+          Row(
+            children: [
+              Text(
+                "Get in Touch",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: isMobile ? 32 : 40,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(width: 14),
+              Container(
+                width: 48,
+                height: 3,
+                decoration: BoxDecoration(
+                  color: AppColors.gold,
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 16),
           const Text(
@@ -67,24 +80,24 @@ class ContactSection extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontSize: 22,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w800,
           ),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 14),
         const Text(
           "Feel free to reach out via the form or through my professional channels. I typically respond within 24 hours.",
           style: TextStyle(color: Colors.white70, fontSize: 13, height: 1.2),
         ),
-        const SizedBox(height: 28),
+        const SizedBox(height: 25),
 
         ContactInfoCard(
           icon: Icons.email_outlined,
           title: "Email Me",
-          value: "dchizitere347@gmail.com",
+          value: "darlingtonibe09@gmail.com",
           compact: true,
-          onTap: () => launchURL("mailto:dchizitere347@gmail.com"),
+          onTap: () => launchURL("mailto:darlingtonibe09@gmail.com"),
         ),
-        const SizedBox(height: 18),
+        const SizedBox(height: 12),
 
         ContactInfoCard(
           icon: Icons.business_center_outlined,
@@ -95,16 +108,16 @@ class ContactSection extends StatelessWidget {
             "https://www.linkedin.com/in/darlington-chizitere-ibe-4ba3613a2",
           ),
         ),
-        const SizedBox(height: 18),
+        const SizedBox(height: 12),
 
         ContactInfoCard(
           icon: Icons.code,
           title: "Codebase",
-          value: "https://github.com/darlingtonchizitereib", 
+          value: "https://github.com/darlingtonchizitereib",
           compact: true,
           onTap: () => launchURL("https://github.com/darlingtonchizitereib"),
         ),
-        const SizedBox(height: 18),
+        const SizedBox(height: 12),
 
         const ContactInfoCard(
           icon: Icons.location_on_outlined,
@@ -112,14 +125,17 @@ class ContactSection extends StatelessWidget {
           value: "California",
           compact: true,
         ),
-        const SizedBox(height: 28),
+        const SizedBox(height: 24),
 
         Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: AppColors.card,
+            color: AppColors.gold.withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(16),
-            border: const Border(left: BorderSide(color: AppColors.gold, width: 3)),
+            border: Border.all(
+              color: AppColors.gold.withValues(alpha: 0.35),
+              width: 1,
+            ),
           ),
           child: const Text(
             '"Designing software is like composing a symphony; every line of code should play in harmony."',
@@ -199,11 +215,15 @@ class _ContactFormState extends State<_ContactForm> {
         _emailController.clear();
         _messageController.clear();
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Message sent — thanks for reaching out!')),
+          const SnackBar(
+            content: Text('Message sent — thanks for reaching out!'),
+          ),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Something went wrong. Please try again.')),
+          const SnackBar(
+            content: Text('Something went wrong. Please try again.'),
+          ),
         );
       }
     } catch (_) {
@@ -221,9 +241,19 @@ class _ContactFormState extends State<_ContactForm> {
     return Container(
       padding: const EdgeInsets.all(28),
       decoration: BoxDecoration(
-        color: AppColors.card,
+        color: Colors.black,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white10),
+        border: Border.all(
+          color: Colors.white.withValues(alpha: 0.18),
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.white.withValues(alpha: 0.06),
+            blurRadius: 24,
+            spreadRadius: 1,
+          ),
+        ],
       ),
       child: Form(
         key: _formKey,
@@ -258,7 +288,9 @@ class _ContactFormState extends State<_ContactForm> {
               keyboardType: TextInputType.emailAddress,
               validator: (v) {
                 if (v == null || v.trim().isEmpty) return 'Required';
-                if (!v.contains('@') || !v.contains('.')) return 'Enter a valid email';
+                if (!v.contains('@') || !v.contains('.')) {
+                  return 'Enter a valid email';
+                }
                 return null;
               },
             ),
@@ -296,7 +328,10 @@ class _ContactFormState extends State<_ContactForm> {
                     : const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Send Message', style: TextStyle(fontWeight: FontWeight.w700)),
+                          Text(
+                            'Send Message',
+                            style: TextStyle(fontWeight: FontWeight.w700),
+                          ),
                           SizedBox(width: 8),
                           Icon(Icons.send, size: 18),
                         ],
@@ -320,20 +355,28 @@ class _ContactFormState extends State<_ContactForm> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: const TextStyle(color: Colors.white70, fontSize: 13)),
+        Text(
+          label,
+          style: const TextStyle(color: Colors.white70, fontSize: 13),
+        ),
         const SizedBox(height: 8),
         TextFormField(
           controller: controller,
           keyboardType: keyboardType,
           maxLines: maxLines,
           style: const TextStyle(color: Colors.white),
-          validator: validator ?? (v) => (v == null || v.trim().isEmpty) ? 'Required' : null,
+          validator:
+              validator ??
+              (v) => (v == null || v.trim().isEmpty) ? 'Required' : null,
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: const TextStyle(color: Colors.white38),
             filled: true,
             fillColor: Colors.black.withValues(alpha: 0.25),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 14,
+              vertical: 14,
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(color: Colors.white10),

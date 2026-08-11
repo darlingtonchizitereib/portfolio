@@ -67,6 +67,10 @@ class ProjectsSection extends StatelessWidget {
                       description:
                           "School fee management and SMS automation platform for educational institutions.",
                       technologies: const ["Next.js", "Supabase", "SMS"],
+                      liveDemoUrl:
+                          "https://primus-beta.vercel.app/dashboard",
+                      githubUrl:
+                          "https://github.com/darlingtonchizitereib/primus-dashboard",
                     ),
                     const SizedBox(height: 22),
                     _smallProjectCard(
@@ -75,6 +79,9 @@ class ProjectsSection extends StatelessWidget {
                       description:
                           "Premium personal portfolio built with Flutter Web to showcase engineering projects and product thinking.",
                       technologies: const ["Flutter", "Firebase", "Web"],
+                      liveDemoUrl: null,
+                      // TODO: replace with your real portfolio repo URL once pushed
+                      githubUrl: "https://github.com/darlingtonchizitereib",
                     ),
                   ],
                 )
@@ -89,9 +96,11 @@ class ProjectsSection extends StatelessWidget {
                               "assets/images/projects/primus_preview.png",
                           description:
                               "School fee management and SMS automation platform for educational institutions.",
-                          technologies: const ["Next.js", "Supabase", "SMS"],
+                          technologies: const ["TypeScript", "Supabase", "SMS"],
                           liveDemoUrl:
                               "https://primus-beta.vercel.app/dashboard",
+                          githubUrl:
+                              "https://github.com/darlingtonchizitereib/primus-dashboard",
                         ),
                       ),
                     ),
@@ -107,6 +116,8 @@ class ProjectsSection extends StatelessWidget {
                               "Premium personal portfolio built with Flutter Web to showcase engineering projects and product thinking.",
                           technologies: const ["Flutter", "Firebase", "Web"],
                           liveDemoUrl: null,
+                          // TODO: replace with your real portfolio repo URL once pushed
+                          githubUrl: "https://github.com/darlingtonchizitereib",
                         ),
                       ),
                     ),
@@ -188,15 +199,11 @@ class ProjectsSection extends StatelessWidget {
   Widget _featuredImage() {
     return Stack(
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-
-          child: Image.asset(
-            "assets/images/projects/afripay_mockup.png",
-            fit: BoxFit.cover,
-            height: 300,
-            width: double.infinity,
-          ),
+        _ProjectImageFrame(
+          imagePath: "assets/images/projects/afripay_mockup.png",
+          fit: BoxFit.cover,
+          height: 300,
+          width: double.infinity,
         ),
 
         Positioned(
@@ -262,122 +269,11 @@ class ProjectsSection extends StatelessWidget {
 
         const SizedBox(height: 26),
 
-        // ACTION BUTTONS
-        /* Row(
-          children: [
-            Expanded(
-              child: _actionButton(
-                text: "Live Demo",
-                filled: true,
-                enabled: false,
-              ),
-            ),
-            const SizedBox(width: 14),
-            Expanded(
-              child: _actionButton(
-                text: "GitHub",
-                filled: false,
-                enabled: false,
-              ),
-            ),
-          ],
-        ),*/
         // COMING SOON BUTTON
         SizedBox(width: double.infinity, child: _comingSoonButton()),
       ],
     );
   }
-
-  // =========================================================
-  // SMALL PROJECT CARD
-  // =========================================================
-  /*Widget _smallProjectCard({
-    required String title,
-    required String imagePath,
-    required String description,
-    required List<String> technologies,
-    String? liveDemoUrl,
-  }) {
-    return Container(
-      padding: const EdgeInsets.all(22),
-      decoration: _cardDecoration(),
-
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // PROJECT IMAGE
-          ClipRRect(
-            borderRadius: BorderRadius.circular(18),
-            child: Image.asset(
-              imagePath,
-              height: 180,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
-          ),
-
-          const SizedBox(height: 22),
-
-          // PROJECT TITLE
-          Text(
-            title,
-            style: const TextStyle(
-              color: Color(0xFFF8F8F8),
-              fontSize: 26,
-              fontWeight: FontWeight.w800,
-            ),
-          ),
-
-          const SizedBox(height: 12),
-
-          // PROJECT DESCRIPTION
-          Text(
-            description,
-            style: const TextStyle(
-              color: Color(0xFFD9D9D9),
-              fontSize: 12,
-              height: 1.7,
-            ),
-          ),
-
-          const SizedBox(height: 18),
-
-          // TECHNOLOGY CHIPS
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: technologies.map((e) => _TechChip(e)).toList(),
-          ),
-
-          const SizedBox(height: 22),
-
-          // ACTION BUTTONS
-          Row(
-            children: [
-              Expanded(
-                child: _actionButton(
-                  text: "Live Demo",
-                  filled: true,
-                  enabled: true,
-                 url: liveDemoUrl,
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: _actionButton(
-                  text: "GitHub",
-                  filled: false,
-                  enabled: false,
-                ),
-              ),
-            ],
-          ),
-          // COMING SOON BUTTON
-          //SizedBox(width: double.infinity, child: _comingSoonButton()),
-        ],
-      ),
-    );
-  }*/
 
   // =========================================================
   // SMALL PROJECT CARD
@@ -388,6 +284,7 @@ class ProjectsSection extends StatelessWidget {
     required String description,
     required List technologies,
     String? liveDemoUrl,
+    String? githubUrl,
   }) {
     return HoverProjectCard(
       child: Container(
@@ -405,14 +302,11 @@ class ProjectsSection extends StatelessWidget {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(18),
-                    child: Image.asset(
-                      imagePath,
-                      height: 180,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
+                  _ProjectImageFrame(
+                    imagePath: imagePath,
+                    height: 180,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
                   ),
 
                   const SizedBox(height: 22),
@@ -422,6 +316,7 @@ class ProjectsSection extends StatelessWidget {
                     description: description,
                     technologies: technologies,
                     liveDemoUrl: liveDemoUrl,
+                    githubUrl: githubUrl,
                   ),
                 ],
               );
@@ -430,33 +325,6 @@ class ProjectsSection extends StatelessWidget {
             // =========================
             // DESKTOP → HORIZONTAL
             // =========================
-            /* return Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: 230,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(18),
-                    child: Image.asset(
-                      imagePath,
-                      height: 170,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-
-                const SizedBox(width: 22),
-
-                Expanded(
-                  child: _smallProjectContent(
-                    title: title,
-                    description: description,
-                    technologies: technologies,
-                    liveDemoUrl: liveDemoUrl,
-                  ),
-                ),
-              ],
-            );*/
             return Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -469,6 +337,7 @@ class ProjectsSection extends StatelessWidget {
                     description: description,
                     technologies: technologies,
                     liveDemoUrl: liveDemoUrl,
+                    githubUrl: githubUrl,
                   ),
                 ),
 
@@ -479,13 +348,10 @@ class ProjectsSection extends StatelessWidget {
                 // =========================
                 SizedBox(
                   width: 230,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(18),
-                    child: Image.asset(
-                      imagePath,
-                      height: 180,
-                      fit: BoxFit.contain,
-                    ),
+                  child: _ProjectImageFrame(
+                    imagePath: imagePath,
+                    height: 180,
+                    fit: BoxFit.contain,
                   ),
                 ),
               ],
@@ -504,6 +370,7 @@ class ProjectsSection extends StatelessWidget {
     required String description,
     required List technologies,
     String? liveDemoUrl,
+    String? githubUrl,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -541,7 +408,7 @@ class ProjectsSection extends StatelessWidget {
 
         const SizedBox(height: 16),
 
-        // ACTION BUTTONS (UNCHANGED)
+        // ACTION BUTTONS
         Row(
           children: [
             Expanded(
@@ -559,7 +426,8 @@ class ProjectsSection extends StatelessWidget {
               child: _actionButton(
                 text: "GitHub",
                 filled: false,
-                enabled: false,
+                enabled: githubUrl != null,
+                url: githubUrl,
               ),
             ),
           ],
@@ -620,6 +488,50 @@ class _TechChip extends StatelessWidget {
           fontWeight: FontWeight.w600,
         ),
       ),
+    );
+  }
+}
+
+// =========================================================
+// PREMIUM PROJECT IMAGE FRAME
+// =========================================================
+class _ProjectImageFrame extends StatelessWidget {
+  final String imagePath;
+  final double? height;
+  final double? width;
+  final BoxFit fit;
+
+  const _ProjectImageFrame({
+    required this.imagePath,
+    this.height,
+    this.width,
+    this.fit = BoxFit.contain,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        color: const Color(0xFF0B0D11),
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: Colors.white.withOpacity(0.10), width: 1),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.45),
+            blurRadius: 22,
+            offset: const Offset(0, 12),
+          ),
+          BoxShadow(
+            color: AppColors.gold.withOpacity(0.06),
+            blurRadius: 28,
+            spreadRadius: -6,
+          ),
+        ],
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Image.asset(imagePath, fit: fit),
     );
   }
 }
@@ -688,7 +600,6 @@ BoxDecoration _cardDecoration() {
 // =========================================================
 // ACTION BUTTON
 // =========================================================
-// ignore: unused_element
 Widget _actionButton({
   required String text,
   required bool filled,
