@@ -29,11 +29,11 @@ class _CustomNavbarState extends State<CustomNavbar> {
   bool _isMenuOpen = false;
 
   void _openResume() {
-  html.window.open(
-    'assets/images/resume/Ibe_Darlington_Chizitere_Resume_MAIN.pdf',
-    '_blank',
-  );
-}
+    html.window.open(
+      'assets/images/resume/Ibe_Darlington_Chizitere_Resume_MAIN.pdf',
+      '_blank',
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +42,9 @@ class _CustomNavbarState extends State<CustomNavbar> {
         children: [
           Container(
             color: AppColors.background,
-            
+
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(15,11,15,10),
+              padding: const EdgeInsets.fromLTRB(15, 11, 15, 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -59,7 +59,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
                           onPressed: widget.onHomePressed,
                           child: const Text("Home"),
                         ),
-              
+
                         const SizedBox(width: 12),
                         TextButton(
                           style: TextButton.styleFrom(
@@ -68,7 +68,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
                           onPressed: widget.onAboutPressed,
                           child: const Text("About"),
                         ),
-              
+
                         const SizedBox(width: 12),
                         TextButton(
                           style: TextButton.styleFrom(
@@ -77,7 +77,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
                           onPressed: widget.onSkillsPressed,
                           child: const Text("Skills"),
                         ),
-              
+
                         const SizedBox(width: 12),
                         TextButton(
                           style: TextButton.styleFrom(
@@ -86,7 +86,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
                           onPressed: widget.onProjectsPressed,
                           child: const Text("Projects"),
                         ),
-              
+
                         const SizedBox(width: 12),
                         TextButton(
                           style: TextButton.styleFrom(
@@ -98,7 +98,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
                       ],
                     ),
                   ),
-              
+
                   // CENTER LOGO
                   Row(
                     children: [
@@ -115,9 +115,9 @@ class _CustomNavbarState extends State<CustomNavbar> {
                           size: 22,
                         ),
                       ),
-              
+
                       const SizedBox(width: 10),
-              
+
                       const Text(
                         "DARLINGTON IBE",
                         style: TextStyle(
@@ -128,7 +128,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
                       ),
                     ],
                   ),
-              
+
                   // RIGHT SIDE
                   Expanded(
                     child: Row(
@@ -155,18 +155,16 @@ class _CustomNavbarState extends State<CustomNavbar> {
                             ),
                           ),
                         ),
-              
+
                         const SizedBox(width: 9),
-              
+
                         Stack(
                           children: [
                             const CircleAvatar(
                               radius: 18,
-                              backgroundImage: AssetImage(
-                               "assets/image.png",
-                              ),
+                              backgroundImage: AssetImage("assets/image.png"),
                             ),
-              
+
                             Positioned(
                               bottom: 0,
                               right: 0,
@@ -212,14 +210,6 @@ class _CustomNavbarState extends State<CustomNavbar> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  "DARLINGTON IBE",
-                  style: TextStyle(
-                    color: AppColors.gold,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
                 IconButton(
                   onPressed: () {
                     setState(() {
@@ -227,6 +217,61 @@ class _CustomNavbarState extends State<CustomNavbar> {
                     });
                   },
                   icon: const Icon(Icons.menu, color: Colors.white),
+                ),
+
+                Row(
+                  children: [
+                    Container(
+                      width: 33,
+                      height: 33,
+                      decoration: BoxDecoration(
+                        color: AppColors.gold,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Icon(
+                        Icons.hexagon_outlined,
+                        color: Colors.black,
+                        size: 22,
+                      ),
+                    ),
+                    
+                    SizedBox(width: 5,),
+
+                    const Text(
+                      "DARLINGTON IBE",
+                      style: TextStyle(
+                        color: AppColors.gold,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+
+                Stack(
+                  children: [
+                    const CircleAvatar(
+                      radius: 18,
+                      backgroundImage: AssetImage("assets/image.png"),
+                    ),
+
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: Container(
+                        width: 14,
+                        height: 14,
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: AppColors.background,
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -239,7 +284,10 @@ class _CustomNavbarState extends State<CustomNavbar> {
                   widget.onHomePressed();
                   setState(() => _isMenuOpen = false);
                 },
-                child: const Text("Home"),
+                child: const Text(
+                  "Home",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
 
               TextButton(
@@ -247,7 +295,10 @@ class _CustomNavbarState extends State<CustomNavbar> {
                   widget.onAboutPressed();
                   setState(() => _isMenuOpen = false);
                 },
-                child: const Text("About"),
+                child: const Text(
+                  "About",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
 
               TextButton(
@@ -255,7 +306,10 @@ class _CustomNavbarState extends State<CustomNavbar> {
                   widget.onSkillsPressed();
                   setState(() => _isMenuOpen = false);
                 },
-                child: const Text("Skills"),
+                child: const Text(
+                  "Skills",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
 
               TextButton(
@@ -263,7 +317,10 @@ class _CustomNavbarState extends State<CustomNavbar> {
                   widget.onProjectsPressed();
                   setState(() => _isMenuOpen = false);
                 },
-                child: const Text("Projects"),
+                child: const Text(
+                  "Projects",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
 
               TextButton(
@@ -271,7 +328,10 @@ class _CustomNavbarState extends State<CustomNavbar> {
                   widget.onContactPressed();
                   setState(() => _isMenuOpen = false);
                 },
-                child: const Text("Contact"),
+                child: const Text(
+                  "Contact",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ],

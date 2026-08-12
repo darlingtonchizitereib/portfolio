@@ -8,6 +8,7 @@ import '../sections/about_section.dart';
 import '../sections/skills_section.dart';
 import '../sections/projects_section.dart';
 import '../sections/contact_section.dart';
+import '../sections/footer_section.dart';
 //import '../sections/hero_section_v2.dart';
 
 class HomePage extends StatefulWidget {
@@ -63,6 +64,8 @@ class _HomePageState extends State<HomePage> {
                 ProjectsSection(key: _projectsKey),
 
                 ContactSection(key: _contactKey),
+                
+                const FooterSection(),
               ],
             ),
           ),
