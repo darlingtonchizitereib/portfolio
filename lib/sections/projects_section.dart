@@ -75,7 +75,7 @@ class ProjectsSection extends StatelessWidget {
                     const SizedBox(height: 22),
                     _smallProjectCard(
                       title: "Portfolio Website",
-                      imagePath: "assets/images/projects/portfolio_preview.png",
+                      imagePath: "assets/images/projects/portfolio.png",
                       description:
                           "Premium personal portfolio built with Flutter Web to showcase engineering projects and product thinking.",
                       technologies: const ["Flutter", "Firebase", "Web"],

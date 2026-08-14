@@ -62,11 +62,11 @@ class HeroSection extends StatelessWidget {
             ),
             child: isMobile
                 ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      _buildTextContent(isMobile),
+                      _buildMobileCircularImage(),
                       const SizedBox(height: 40),
-                      Center(child: _buildImage(isMobile)),
+                      _buildTextContent(isMobile),
                     ],
                   )
                 : Row(
@@ -77,7 +77,7 @@ class HeroSection extends StatelessWidget {
                         flex: 4,
                         child: Align(
                           alignment: Alignment.bottomRight,
-                          child: _buildImage(isMobile),
+                          child: _buildDesktopFramedImage(),
                         ),
                       ),
                     ],
@@ -111,29 +111,32 @@ class HeroSection extends StatelessWidget {
 
   Widget _buildTextContent(bool isMobile) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment:
+          isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
       children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          decoration: BoxDecoration(
-            color: AppColors.gold.withValues(alpha: 0.12),
-            borderRadius: BorderRadius.circular(25),
-            border: Border.all(color: AppColors.gold),
-          ),
-          child: const Text(
-            "Open to New Opportunities",
-            style: TextStyle(
-              color: AppColors.gold,
-              fontWeight: FontWeight.w600,
-              fontSize: 10,
+        // "Open to New Opportunities" badge — desktop only per design
+        if (!isMobile) ...[
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            decoration: BoxDecoration(
+              color: AppColors.gold.withValues(alpha: 0.12),
+              borderRadius: BorderRadius.circular(25),
+              border: Border.all(color: AppColors.gold),
+            ),
+            child: const Text(
+              "Open to New Opportunities",
+              style: TextStyle(
+                color: AppColors.gold,
+                fontWeight: FontWeight.w600,
+                fontSize: 10,
+              ),
             ),
           ),
-        ),
+          const SizedBox(height: 25),
+        ],
 
-        const SizedBox(height: 25),
-
-        //const SizedBox(height: 20),
         RichText(
+          textAlign: isMobile ? TextAlign.center : TextAlign.start,
           text: TextSpan(
             style: TextStyle(
               fontSize: isMobile ? 32 : 62,
@@ -157,6 +160,7 @@ class HeroSection extends StatelessWidget {
           "Crafting seamless mobile and web experiences with Flutter.\n"
           "Focused on high-performance, pixel-perfect UI, and scalable\n"
           "cloud integrations.",
+          textAlign: isMobile ? TextAlign.center : TextAlign.start,
           style: TextStyle(
             color: Colors.white70,
             fontSize: isMobile ? 12 : 14,
@@ -166,8 +170,8 @@ class HeroSection extends StatelessWidget {
 
         const SizedBox(height: 30),
 
-        //const SizedBox(height: 30),
         Wrap(
+          alignment: isMobile ? WrapAlignment.center : WrapAlignment.start,
           spacing: 12,
           runSpacing: 12,
           children: [
@@ -184,14 +188,65 @@ class HeroSection extends StatelessWidget {
     );
   }
 
-  Widget _buildImage(bool isMobile) {
+  // =========================================================
+  // MOBILE — CIRCULAR AVATAR (matches Visily design)
+  // =========================================================
+  Widget _buildMobileCircularImage() {
+    const double size = 220;
+
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        Container(
+          width: size,
+          height: size,
+          padding: const EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: const Color(0xFF0A0A0A),
+            border: Border.all(color: AppColors.gold, width: 2.5),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.gold.withOpacity(0.14),
+                blurRadius: 26,
+                spreadRadius: 2,
+              ),
+            ],
+          ),
+          child: ClipOval(
+            child: Image.asset("assets/image.png", fit: BoxFit.cover),
+          ),
+        ),
+
+        // GREEN ONLINE STATUS DOT
+        Positioned(
+          bottom: 8,
+          right: 8,
+          child: Container(
+            width: 44,
+            height: 44,
+            decoration: BoxDecoration(
+              color: const Color(0xFF22C55E),
+              shape: BoxShape.circle,
+              border: Border.all(color: const Color(0xFF0A0A0A), width: 3),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  // =========================================================
+  // DESKTOP — FRAMED IMAGE + EXPERIENCE BADGE (unchanged)
+  // =========================================================
+  Widget _buildDesktopFramedImage() {
     return Stack(
       clipBehavior: Clip.none,
       children: [
         // OUTER PREMIUM FRAME
         Container(
-          width: isMobile ? 300 : 360,
-          height: isMobile ? 360 : 470,
+          width: 360,
+          height: 470,
           padding: const EdgeInsets.all(6),
           decoration: BoxDecoration(
             color: const Color(0xFF0A0A0A), // deep black frame
@@ -207,8 +262,6 @@ class HeroSection extends StatelessWidget {
               color: const Color(0xFF111111), // inner dark frame
               borderRadius: BorderRadius.circular(28),
               border: Border.all(
-                // ignore: duplicate_ignore
-                // ignore: deprecated_member_use
                 color: AppColors.gold.withOpacity(0.12),
                 width: 1,
               ),

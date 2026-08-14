@@ -218,7 +218,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
                   },
                   icon: const Icon(Icons.menu, color: Colors.white),
                 ),
-
+            
                 Row(
                   children: [
                     Container(
@@ -236,7 +236,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
                     ),
                     
                     SizedBox(width: 5,),
-
+            
                     const Text(
                       "DARLINGTON IBE",
                       style: TextStyle(
@@ -247,14 +247,14 @@ class _CustomNavbarState extends State<CustomNavbar> {
                     ),
                   ],
                 ),
-
+            
                 Stack(
                   children: [
                     const CircleAvatar(
                       radius: 18,
                       backgroundImage: AssetImage("assets/image.png"),
                     ),
-
+            
                     Positioned(
                       bottom: 0,
                       right: 0,
@@ -334,6 +334,17 @@ class _CustomNavbarState extends State<CustomNavbar> {
                 ),
               ),
             ],
+
+            SizedBox(height: 15,),
+
+            
+             // THIN PREMIUM DIVIDER
+          Container(
+            width: double.infinity,
+            height: 1,
+            color: Colors.yellow.withValues(alpha: 0.2),
+          ),
+
           ],
         ),
       );
