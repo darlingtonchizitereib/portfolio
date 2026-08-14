@@ -80,8 +80,8 @@ class ProjectsSection extends StatelessWidget {
                           "Premium personal portfolio built with Flutter Web to showcase engineering projects and product thinking.",
                       technologies: const ["Flutter", "Firebase", "Web"],
                       liveDemoUrl: null,
-                      // TODO: replace with your real portfolio repo URL once pushed
-                      githubUrl: "https://github.com/darlingtonchizitereib",
+                      //TODO: replace with your real portfolio repo URL once pushed
+                      githubUrl: "https://github.com/darlingtonchizitereib/portfolio",
                     ),
                   ],
                 )
